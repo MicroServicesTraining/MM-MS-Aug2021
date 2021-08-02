@@ -69,7 +69,7 @@ public class VendorController {
 		
 		return "Vendor Updated Successfully";
 	}
-	
+	//some commit
 	@DeleteMapping("/{vendorname}")
 	public String deleteVendor(@PathVariable(name = "vendorname") String vendorName) {
 	

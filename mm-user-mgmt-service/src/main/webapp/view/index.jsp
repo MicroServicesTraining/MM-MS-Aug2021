@@ -8,7 +8,13 @@
 </head>
 <body>
 <h1>Welcome To User Management Service</h1>
-<a href="./login.jsp">Login Here</a> <br />
-<a href="./registration.jsp">Register here</a>
+<!-- <a href="./login">Login Here</a> <br /> -->
+
+<a href="./admin">Goto Admin Home</a>
+<a href="./seller">Goto Seller Home</a>
+<a href="./customer">Goto Customer Home</a>
+
+<a href="./logout">Signout</a>
+
 </body>
 </html>

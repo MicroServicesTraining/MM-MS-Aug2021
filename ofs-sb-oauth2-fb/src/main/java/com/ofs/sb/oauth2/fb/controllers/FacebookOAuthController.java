@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  * @author dorak
@@ -22,8 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class FacebookOAuthController {
 	
-	private FacebookConnectionFactory factory = new FacebookConnectionFactory("777008432866350",
-			"97de436513f715026ceabb3d7edc07b8");
+	private FacebookConnectionFactory factory = new FacebookConnectionFactory("452491612605440",
+			"c9ac9f76b5f6a480009b703baa09c7ef");
 
 	
 	@GetMapping("/")
@@ -33,7 +34,7 @@ public class FacebookOAuthController {
 	}
 	
 	@GetMapping(value = "/facebooklogin")
-	public String loginWithFacebook() {
+	public RedirectView loginWithFacebook() {
 
 		OAuth2Operations operations = factory.getOAuthOperations();
 		OAuth2Parameters params = new OAuth2Parameters();
@@ -43,12 +44,13 @@ public class FacebookOAuthController {
 
 		String url = operations.buildAuthenticateUrl(params);
 		System.out.println("The URL is" + url);
-		return "redirect:" + url;
+		//return "redirect:" + url;
+		return new RedirectView(url);
 
 	}
 	
 	@GetMapping(value = "/userinfo")
-	public ModelAndView prodducer(@RequestParam("code") String authorizationCode) {
+	public ModelAndView loadUserInfo(@RequestParam("code") String authorizationCode) {
 		OAuth2Operations operations = factory.getOAuthOperations();
 		AccessGrant accessToken = operations.exchangeForAccess(authorizationCode, "http://localhost:8084/of/userinfo",
 				null);

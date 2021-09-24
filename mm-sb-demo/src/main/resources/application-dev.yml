@@ -1,0 +1,11 @@
+server:
+  port: 8762  
+
+sbdemo:
+  appname: Demo Application1 - Dev
+  count: 108
+
+dbconfig:
+  url: dburl
+  user: dbuser
+  password: dbpwd
